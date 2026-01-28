@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trnovo pri Gorici</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tooplate-living-parallax.css">
+<!--
+
+Tooplate 2150 Living Parallax
+
+https://www.tooplate.com/view/2150-living-parallax
+
+Free HTML CSS Template
+
+-->
+</head>
+<body>
+    <!-- UI Toggle Button - Always Visible -->
+    <button class="ui-toggle-btn" id="uiToggleBtn" aria-label="Toggle UI Visibility">
+        <svg viewBox="0 0 24 24" id="eyeIcon">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+        </svg>
+    </button>
+
+    <!-- Header -->
+    <header class="ui-element">
+        <div class="logo">Trnovo</div>
+        <nav id="mainNav">
+            <a onclick="openOverlay('about')">O Trnovem</a>
+            <a onclick="openOverlay('contact')">Kontakt</a>
+            <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Toggle Fullscreen">
+                <svg viewBox="0 0 24 24">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Slider -->
+    <div class="slider-wrapper">
+        <div class="slider-container" id="slider">
+            <!-- Slide 1 -->
+            <div class="slide active" data-index="0">
+                <div class="parallax-layer background-layer">
+                    <img src="images/trnovo1.jpg" alt="Trnovska vas">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Trnovska vas</h2>
+                    <p>Trnovo pri Gorici je slikovita kraška vasica na Trnovsko-Banjški planoti, bogata z naravno in kulturno dediščino.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" data-index="1">
+                <div class="parallax-layer background-layer">
+                    <img src="images/skozno.jpg" alt="skozno">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Skozno – kamnito "okno"</h2>
+                    <p>Skozno je znamenita naravna kamnita premostitev na robu Trnovskega gozda</p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" data-index="2">
+                <div class="parallax-layer background-layer">
+                    <img src="images/kobilnik.jpg" alt="NOB spomenik">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Spomenik NOB Kobilnik – spomin in spoštovanje</h2>
+                    <p>Spomenik NOB na Kobilniku ohranja spomin na padle borce in pomembne dogodke narodnoosvobodilnega boja na tem območju.</p>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide" data-index="3">
+                <div class="parallax-layer background-layer">
+                    <img src="images/furenga.webp" alt="furenga">
+                </div>
+                <div class="image-info ui-element">
+                    <h2>Furenga – tradicionalni prevoz lesa</h2>
+                    <p>Furenga prikazuje starodavni prevoz mlaja iz Trnovega v Novo Gorico s konjsko vprego.</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="nav-arrow prev ui-element">‹</div>
+            <div class="nav-arrow next ui-element">›</div>
+
+            <!-- Dots -->
+            <div class="dots-container ui-element">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Parallax Shapes -->
+    <div class="parallax-shape shape-1 ui-element"></div>
+    <div class="parallax-shape shape-2 ui-element"></div>
+
+    <!-- Play/Pause Button -->
+    <button class="play-pause-btn ui-element" id="playPauseBtn" aria-label="Play/Pause Slideshow">
+        <svg viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+        </svg>
+    </button>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container ui-element">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Duration Controls -->
+    <div class="duration-controls ui-element">
+        <button class="duration-btn" id="decreaseDuration" aria-label="Decrease Duration">−</button>
+        <div class="duration-display" id="durationDisplay">5<span>s</span></div>
+        <button class="duration-btn" id="increaseDuration" aria-label="Increase Duration">+</button>
+    </div>
+
+    <!-- About Overlay -->
+    <div class="overlay" id="aboutOverlay">
+        <div class="overlay-content">
+            <button class="close-btn" onclick="closeOverlay('about')">×</button>
+            <h2>Trnovo pri Gorici</h2>
+            <p>Trnovo je kraško naselje v Mestni občini Nova Gorica. Nahaja se na regionalni cesti Nova Gorica – Lokve. Znano je po velikem spomeniku iz obdobja NOB. Spomenik, ki je delo arhitekta Eda Ravnikarja, se nahaja ob vznožju hriba Kobilnik, na vrhu katerega je tudi grobnica padlih. Na ploščah so vklesana imena več kot 3000 žrtev fašističnega nasilja iz občine Nova Gorica. Vas je bila med 2. svetovno vojno prizorišče hudih bojev med italijanskim in kasneje nemškim okupatorjem ter partizani IX. korpusa. Ljudje v vasi se večinoma vozijo na delo v Novo Gorico, nekaj je pravih kmetov.</p>
+            <img src="images/zemljevid.png" id="slikaZemljevid" alt="lokacija trnovega">
+        </div>
+    </div>
+    <!-- Contact Overlay -->
+    <div class="overlay" id="contactOverlay">
+        <div class="overlay-content">
+            <button class="close-btn" onclick="closeOverlay('contact')">×</button>
+            <h2>Kontaktirajte nas</h2>
+            <p>Imate vprašanje? Z veseljem vas poslušamo. Izpolnite spodnji obrazec in vam bomo odgovorili čim hitreje.</p>
+            
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <label>Ime</label>
+                <input type="text" name="name" placeholder="Ime" required>
+                
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your.email@example.com" required>
+                
+                <label>Zadeva</label>
+                <input type="text" name="subject" placeholder="O čem je to?" required>
+                
+                <label>Sporočilo</label>
+                <textarea name="message" placeholder="Povejte nam več" required></textarea>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+<script src="tooplate-living-scripts.js"></script>
+</body>
+</html>
