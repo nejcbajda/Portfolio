@@ -23,7 +23,10 @@ body {
 	background: #000;
 	overflow-x: hidden;
 }
-
+.skozno{
+	text-decoration: none;
+	color: rgb(43, 125, 153);
+}
 /* Header Styles */
 header {
 	position: fixed;

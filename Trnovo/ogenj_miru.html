@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="sl" class="h-full">
+ <head><!-- Nastavitve kodiranja in prikaza za slovenščino in mobilne naprave -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ogenj miru</title><!-- Naloži Tailwind CSS knjižnico za hitro oblikovanje -->
+  <script src="https://cdn.tailwindcss.com"></script><!-- Naloži Canva SDK za urejanje elementov -->
+  <script src="/_sdk/element_sdk.js"></script><!-- Naloži elegantne pisave iz Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Raleway:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    /* Osnovna nastavitev za pravilno izračunavanje velikosti */
+    body {
+      box-sizing: border-box;
+    }
+    
+    /* Pisava za naslove - elegantna serif pisava */
+    .font-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    
+    /* Pisava za običajno besedilo - moderna sans-serif pisava */
+    .font-body {
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    /* Animacija: Utripajoč plamen z rahlim guganjem */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      25% { opacity: 0.9; transform: scale(1.02) rotate(-1deg); }
+      50% { opacity: 1; transform: scale(0.98); }
+      75% { opacity: 0.95; transform: scale(1.01) rotate(1deg); }
+    }
+    
+    /* Animacija: Svetleči učinek okoli plamena */
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 20px rgba(251, 146, 60, 0.6)); }
+      50% { filter: drop-shadow(0 0 40px rgba(251, 146, 60, 0.9)); }
+    }
+    
+    /* Animacija: Lebdenje navzgor in navzdol */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Animacija: Pojavi se od spodaj navzgor */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Uporabi animacije utripanja in svetlobe na ikoni plamena */
+    .flame-icon {
+      animation: flicker 3s ease-in-out infinite, glow 2s ease-in-out infinite;
+    }
+    
+    /* Uporabi lebdečo animacijo */
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    /* Uporabi animacijo pojavljanja od spodaj */
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    /* Različne zamude za zaporedno pojavljanje elementov */
+    .delay-1 { animation-delay: 0.2s; opacity: 0; }
+    .delay-2 { animation-delay: 0.4s; opacity: 0; }
+    .delay-3 { animation-delay: 0.6s; opacity: 0; }
+    .delay-4 { animation-delay: 0.8s; opacity: 0; }
+    
+    /* Barvni prehod za besedilo (rumena → oranžna → rdeča) */
+    .gradient-text {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #dc2626 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Učinek dviga kartice ob prehodu miške čez njo */
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body"><!-- Glavni ovijalec za celotno stran - omogoča drsenje vsebine -->
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- UVODNI ODDELEK (Hero Section) - Prva stvar, ki jo uporabnik vidi -->
+   <section id="hero-section" class="relative min-h-screen flex items-center justify-center overflow-hidden"><!-- Ozadje z animacijami -->
+    <div class="absolute inset-0"><!-- Slika spomenika v ozadju --> <img src="https://www.hikuk.com/media/id/ri/ja/hi/ik/spomenik%20-%20ogenj%20miru%20in%20ljubezni%20trnovo%20mestna%20obcina%20nova%20gorica%20hikuk_com_large.jpg" alt="Spomenik Ognja miru in ljubezni v Trnovu, Nova Gorica" loading="lazy" class="w-full h-full object-cover" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(to bottom, #0f172a, #1e293b, #0f172a)'; this.alt='Slika ni na voljo';"> <!-- Temen prekrivni sloj za boljšo berljivost besedila -->
+     <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/90"></div><!-- Oranžen svetleči krog v sredini -->
+     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(251,146,60,0.15)_0%,transparent_70%)]"></div><!-- Lebdeče delce okoli strani za dinamičnost -->
+     <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute w-2 h-2 bg-orange-400/30 rounded-full top-1/4 left-1/4 float-animation" style="animation-delay: 0s;"></div>
+      <div class="absolute w-1 h-1 bg-amber-300/40 rounded-full top-1/3 right-1/3 float-animation" style="animation-delay: 1s;"></div>
+      <div class="absolute w-3 h-3 bg-orange-500/20 rounded-full bottom-1/4 left-1/3 float-animation" style="animation-delay: 2s;"></div>
+      <div class="absolute w-1.5 h-1.5 bg-yellow-400/30 rounded-full top-1/2 right-1/4 float-animation" style="animation-delay: 0.5s;"></div>
+      <div class="absolute w-2 h-2 bg-red-400/25 rounded-full bottom-1/3 right-1/2 float-animation" style="animation-delay: 1.5s;"></div>
+     </div>
+    </div><!-- Osrednja vsebina uvodnega oddelka -->
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto"><!-- Animirana ikona plamena (SVG grafika) -->
+     <div class="flame-icon mb-8 inline-block">
+      <svg width="120" height="120" viewbox="0 0 100 100" class="mx-auto"><!-- Barvni prehod za plamen (od rdeče do rumene) --> <defs>
+        <lineargradient id="flameGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+         <stop offset="0%" style="stop-color:#dc2626" />
+         <stop offset="40%" style="stop-color:#f97316" />
+         <stop offset="70%" style="stop-color:#fbbf24" />
+         <stop offset="100%" style="stop-color:#fef3c7" />
+        </lineargradient>
+       </defs> <!-- Oblika plamena --> <path d="M50 10 C50 10 30 35 30 55 C30 70 38 80 50 85 C62 80 70 70 70 55 C70 35 50 10 50 10 Z M50 25 C50 25 40 40 40 52 C40 62 44 68 50 70 C56 68 60 62 60 52 C60 40 50 25 50 25 Z" fill="url(#flameGradient)" /> <!-- Senca pod plamenom --> <ellipse cx="50" cy="88" rx="15" ry="4" fill="#f97316" opacity="0.3" />
+      </svg>
+     </div><!-- Glavni naslov strani -->
+     <h1 id="main-title" class="font-heading text-6xl md:text-8xl font-bold mb-6 fade-in-up gradient-text pb-4">Ogenj miru</h1><!-- Podnaslov -->
+     <p id="hero-subtitle" class="text-xl md:text-2xl text-amber-100/80 font-light tracking-wide fade-in-up delay-1">Mir in ljubezen</p><!-- Puščica za pomik navzdol -->
+     <div class="mt-12 fade-in-up delay-2"><a href="#about" class="inline-flex items-center gap-2 text-amber-200/60 hover:text-amber-200 transition-colors duration-300"> <span class="text-sm tracking-widest uppercase">Odkrij več</span>
+       <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+       </svg></a>
+     </div>
+    </div>
+   </section><!-- ODDELEK O NAS - Razlaga, kaj je Ogenj miru -->
+   <section id="about" class="py-24 px-6 bg-gradient-to-b from-slate-900 to-slate-800">
+    <div class="max-w-6xl mx-auto"><!-- Naslov oddelka -->
+     <div class="text-center mb-16">
+      <h2 id="about-title" class="font-heading text-4xl md:text-5xl font-semibold text-amber-100 mb-6">Kaj je Ogenj miru?</h2><!-- Dekorativna črta pod naslovom -->
+      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent mx-auto"></div>
+     </div><!-- Razporeditev vsebine v dva stolpca (besedilo levo, ikona desno) -->
+     <div class="grid md:grid-cols-2 gap-12 items-center mb-16"><!-- Leva stran: Opisno besedilo -->
+      <div><!-- Prvi odstavek - osnovne informacije o spomeniku -->
+       <p id="about-text" class="text-lg text-slate-300 leading-relaxed mb-6">Spomenik Ogenj miru in ljubezni na Trnovem je simbol miru, ki stoji v čudoviti naravi. Ta osupljiv spomenik je posvečen žrtvam obeh svetovnih vojn in vsem, ki so trpeli zaradi nasilja in sovraštva.</p><!-- Drugi odstavek - o simboliki -->
+       <p class="text-lg text-slate-300 leading-relaxed mb-6">Večni plamen, ki gori na tem svetem kraju, predstavlja mir, upanje in ljubezen med narodi. Spomenik je postal pomembna točka za obiskovalce, ki želijo počastiti spomin na padle in razmisliti o pomenu miru, strpnosti ter sodelovanja med ljudmi.</p><!-- Tretji odstavek - o lokaciji -->
+       <p class="text-lg text-slate-300 leading-relaxed">Danes ta kraj združuje ljudi v spomin in upanju za mir, kjer vsak obiskovalec lahko prižge svojo lastno luč miru.</p>
+      </div><!-- Desna stran: Dekorativna ikona goloba (simbol miru) -->
+      <div class="relative"><!-- Dva koncentrična kroga z gradient ozadjem -->
+       <div class="aspect-square rounded-full bg-gradient-to-br from-orange-500/20 to-red-600/20 flex items-center justify-center">
+        <div class="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-orange-500/30 to-amber-500/30 flex items-center justify-center"><!-- Emoji goloba z animacijo plamena -->
+         <div class="text-8xl flame-icon">
+          🕊️
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Oddelek o Dečku miru -->
+     <div class="bg-gradient-to-r from-slate-800/50 to-slate-700/50 rounded-2xl p-8 md:p-12 border border-slate-600/30 backdrop-blur">
+      <div class="grid md:grid-cols-2 gap-8 items-start"><!-- Leva stran: Slika Dečka miru -->
+       <div class="relative rounded-xl overflow-hidden"><img src="https://siol.net/media/img/0e/db/87afa010e4892a4c3a4f-decek-miru.jpeg" alt="Bronasti kip Dečka miru v Trnovu" loading="lazy" class="w-full h-full object-cover" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(to bottom, #334155, #475569)'; this.alt='Slika ni na voljo';">
+       </div><!-- Desna stran: Besedilo -->
+       <div>
+        <div class="flex items-start gap-3 mb-4"><!-- Ikona otroka --> <span class="text-4xl">👦</span>
+         <h3 class="font-heading text-2xl md:text-3xl font-semibold text-amber-100">Deček miru</h3>
+        </div><!-- Opis Dečka miru - prvi odstavek -->
+        <p class="text-lg text-slate-300 leading-relaxed mb-4">Ob poti na spomenik NOB na Trnovem stoji kip Dečka miru. Ta bronasti kip predstavlja mladostnika z dvignjeno roko v znamenju miru, ki simbolizira nedolžnost otroštva in upanje na mirno prihodnost.</p><!-- Opis Dečka miru - drugi odstavek -->
+        <p class="text-lg text-slate-300 leading-relaxed mb-4">Kip je bil postavljen kot spomin na vse otroke, ki so trpeli in umrli v vojnah, ter kot opomin, da je mir najdragocenejša vrednota. Deček miru je postal pomemben del spominskega kompleksa v Trnovu, ki obiskovalce vabi k razmisleku o pomenu miru za prihodnje generacije.</p><!-- Opis Dečka miru - tretji odstavek -->
+        <p class="text-lg text-slate-300 leading-relaxed">Čeprav je kip večkrat postal žrtev vandalizma, lokalna skupnost vedno znova poskrbi za njegovo obnovo, saj predstavlja pomembno sporočilo o miru in nenasilju. Deček s svojo gesto dvignjene roke nagovarja vsakega obiskovalca, da nosi mir naprej v svet.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- ODDELEK VREDNOTE - Trije stebri gibanja -->
+   <section class="py-24 px-6 bg-slate-800">
+    <div class="max-w-6xl mx-auto"><!-- Tri kartice postavljene v vrstico -->
+     <div class="grid md:grid-cols-3 gap-8"><!-- Kartica 1: Upanje -->
+      <div class="card-hover bg-gradient-to-b from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 backdrop-blur">
+       <div class="mb-6">
+        <svg width="60" height="60" viewbox="0 0 60 60" fill="none"><path d="M30 5 L35 22 L52 22 L38 32 L43 49 L30 39 L17 49 L22 32 L8 22 L25 22 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="2" /> <circle cx="30" cy="30" r="3" fill="#fef3c7" />
+        </svg>
+       </div>
+       <h3 class="font-heading text-2xl font-semibold text-amber-100 mb-4">Upanje</h3>
+       <p class="text-slate-300">Ogenj miru prinaša svetlobo v trenutkih teme in krepi vero v boljši jutri za vse ljudi.</p>
+      </div><!-- Kartica 2: Povezanost -->
+      <div class="card-hover bg-gradient-to-b from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 backdrop-blur">
+       <div class="mb-6">
+        <svg width="60" height="60" viewbox="0 0 60 60" fill="none"><path d="M15 35 Q20 25 30 30 Q40 35 45 25" stroke="#f97316" stroke-width="3" stroke-linecap="round" fill="none" /> <circle cx="15" cy="35" r="8" fill="#fbbf24" stroke="#f59e0b" stroke-width="2" /> <circle cx="45" cy="25" r="8" fill="#fbbf24" stroke="#f59e0b" stroke-width="2" /> <circle cx="30" cy="30" r="5" fill="#fef3c7" />
+        </svg>
+       </div>
+       <h3 class="font-heading text-2xl font-semibold text-amber-100 mb-4">Povezanost</h3>
+       <p class="text-slate-300">Združujemo ljudi različnih ozadij v skupni viziji sveta, kjer vladata mir in razumevanje.</p>
+      </div><!-- Kartica 3: Sprememba -->
+      <div class="card-hover bg-gradient-to-b from-slate-700/50 to-slate-800/50 rounded-2xl p-8 border border-slate-600/30 backdrop-blur">
+       <div class="text-5xl mb-6">
+        💫
+       </div>
+       <h3 class="font-heading text-2xl font-semibold text-amber-100 mb-4">Sprememba</h3>
+       <p class="text-slate-300">Vsako majhno dejanje ljubezni in dobrote ima moč, da sproži val pozitivnih sprememb.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- NOGA STRANI (Footer) - Spodnji del z navigacijo -->
+   <footer class="py-12 px-6 bg-slate-900 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col md:flex-row justify-between items-center gap-6"><!-- Leva stran: Logo z imenom -->
+      <div class="flex items-center gap-3"><span class="text-2xl">🔥</span> <span class="font-heading text-xl text-amber-100">Ogenj miru</span>
+      </div><!-- Sredina: Navigacijske povezave -->
+      <div class="flex gap-6"><a href="#about" class="text-slate-400 hover:text-amber-200 transition-colors">O nas</a> <a href="#" id="contact-link" class="text-slate-400 hover:text-amber-200 transition-colors cursor-pointer">Kontakt</a>
+      </div><!-- Desna stran: Copyright besedilo -->
+      <p class="text-slate-500 text-sm">© 2024 Ogenj miru. Vsi za mir.</p>
+     </div>
+    </div>
+   </footer><!-- POP-UP KONTAKTNI OBRAZEC -->
+   <div id="contact-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
+    <div class="bg-gradient-to-b from-slate-800 to-slate-900 rounded-2xl max-w-md w-full p-8 border border-slate-600/30 shadow-2xl relative"><!-- Gumb za zapiranje --> <button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-amber-200 transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg></button> <!-- Naslov obrazca -->
+     <div class="text-center mb-6">
+      <div class="text-4xl mb-3">
+       ✉️
+      </div>
+      <h3 class="font-heading text-3xl font-semibold text-amber-100 mb-2">Kontaktirajte nas</h3>
+      <p class="text-slate-400">Pošljite nam sporočilo</p>
+     </div><!-- Obrazec -->
+     <form id="contact-form" class="space-y-4"><!-- Polje: Ime -->
+      <div><label for="name" class="block text-sm font-medium text-slate-300 mb-2">Ime in priimek</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="Vaše ime">
+      </div><!-- Polje: Email -->
+      <div><label for="email" class="block text-sm font-medium text-slate-300 mb-2">E-pošta</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="vas.email@primer.si">
+      </div><!-- Polje: Sporočilo -->
+      <div><label for="message" class="block text-sm font-medium text-slate-300 mb-2">Sporočilo</label> <textarea id="message" name="message" required rows="4" class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none" placeholder="Vaše sporočilo..."></textarea>
+      </div><!-- Gumb za pošiljanje --> <button type="submit" class="w-full py-3 bg-gradient-to-r from-orange-600 to-amber-500 rounded-lg font-semibold text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105"> Pošlji sporočilo </button>
+     </form><!-- Sporočilo o uspehu (skrito) -->
+     <div id="success-message" class="hidden mt-4 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-center">
+      <p class="text-green-300">✓ Sporočilo uspešno poslano!</p>
+     </div>
+    </div>
+   </div>
+  </div><!-- JAVASCRIPT KOD - Omogoča urejanje vsebine preko Canva vmesnika -->
+  <script>
+    // Privzete nastavitve za konfiguracijo strani
+    const defaultConfig = {
+      // Vsebinska besedila
+      main_title: 'Ogenj miru',
+      hero_subtitle: 'Povezujemo srca po vsem svetu',
+      about_title: 'Kaj je Ogenj miru?',
+      about_text: 'Spomenik Ognja miru in ljubezni v Trnovu pri Novi Gorici je mogočen simbol miru, ki stoji v čudoviti naravi na prehodu med Vipavsko dolino in Goriškimi brdi. Ta osupljiv spomenik je posvečen žrtvam obeh svetovnih vojn in vsem, ki so trpeli zaradi nasilja in sovraštva.',
+      
+      // Barvna shema (5 barv)
+      background_color: '#0f172a',      // Temno modra - glavno ozadje
+      surface_color: '#1e293b',         // Siva - sekundarne površine
+      text_color: '#fef3c7',            // Rumenkasta - besedilo
+      primary_action_color: '#ea580c',  // Oranžna - primarni gumbi
+      secondary_action_color: '#f59e0b' // Jantarna - sekundarni elementi
+    };
+    
+    // Funkcija, ki posodobi videz strani, ko se spremenijo nastavitve
+    async function onConfigChange(config) {
+      // Posodobi vsebino besedil na podlagi konfiguracije
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      
+      // Preberi barve iz konfiguracije (če ne obstajajo, uporabi privzete)
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      // Posodobi ozadje uvodnega oddelka
+      const heroSection = document.getElementById('hero-section');
+      heroSection.style.background = `linear-gradient(to bottom, ${bgColor}, ${surfaceColor}, ${bgColor})`;
+      
+      // Posodobi barvni gradient glavnega naslova
+      const mainTitle = document.getElementById('main-title');
+      mainTitle.style.background = `linear-gradient(135deg, ${secondaryColor} 0%, ${primaryColor} 50%, #dc2626 100%)`;
+      mainTitle.style.webkitBackgroundClip = 'text';
+      mainTitle.style.backgroundClip = 'text';
+      
+      // Posodobi barve besedil
+      document.getElementById('hero-subtitle').style.color = textColor;
+      document.getElementById('about-title').style.color = textColor;
+    }
+    
+    // Funkcija, ki vrne možnosti za spreminjanje barv v Canva vmesniku
+    function mapToCapabilities(config) {
+      return {
+        // Pet barv, ki jih lahko uporabnik spremeni
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => { config.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => { config.secondary_action_color = value; window.elementSdk.setConfig({ secondary_action_color: value }); }
+          }
+        ],
+        borderables: [],           // Brez obrob za urejanje
+        fontEditable: undefined,   // Brez urejanja pisave
+        fontSizeable: undefined    // Brez urejanja velikosti pisave
+      };
+    }
+    
+    // Funkcija, ki poveže ključe iz urejevalnega panela z vrednostmi
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+        ['about_title', config.about_title || defaultConfig.about_title],
+        ['about_text', config.about_text || defaultConfig.about_text]
+      ]);
+    }
+    
+    // Inicializiraj Canva SDK (če je na voljo)
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,           // Privzete nastavitve
+        onConfigChange,          // Funkcija za posodabljanje strani
+        mapToCapabilities,       // Funkcija za barve
+        mapToEditPanelValues     // Funkcija za urejevalni panel
+      });
+    }
+
+    // FUNKCIONALNOST KONTAKTNEGA OBRAZCA
+    
+    // Pridobi elemente iz DOM-a
+    const contactModal = document.getElementById('contact-modal');
+    const contactLink = document.getElementById('contact-link');
+    const closeModal = document.getElementById('close-modal');
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+    
+    // Odpri modal, ko klikneš na "Kontakt"
+    contactLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      contactModal.classList.remove('hidden');
+      contactModal.classList.add('flex');
+    });
+    
+    // Zapri modal, ko klikneš na X gumb
+    closeModal.addEventListener('click', () => {
+      contactModal.classList.add('hidden');
+      contactModal.classList.remove('flex');
+      contactForm.reset();
+      successMessage.classList.add('hidden');
+    });
+    
+    // Zapri modal, ko klikneš izven obrazca (na temno ozadje)
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        contactModal.classList.add('hidden');
+        contactModal.classList.remove('flex');
+        contactForm.reset();
+        successMessage.classList.add('hidden');
+      }
+    });
+    
+    // Obdelava pošiljanja obrazca
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Pridobi podatke iz obrazca
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Simulacija pošiljanja (v resnici bi tukaj poslal podatke na strežnik)
+      console.log('Poslano sporočilo:', formData);
+      
+      // Skrij obrazec in prikaži sporočilo o uspehu
+      contactForm.classList.add('hidden');
+      successMessage.classList.remove('hidden');
+      
+      // Zapri modal po 2 sekundah
+      setTimeout(() => {
+        contactModal.classList.add('hidden');
+        contactModal.classList.remove('flex');
+        contactForm.reset();
+        contactForm.classList.remove('hidden');
+        successMessage.classList.add('hidden');
+      }, 2000);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c79d224675a1e6d',t:'MTc3MDAzNjY5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
